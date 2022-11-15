@@ -39,7 +39,12 @@ function StriLi.EventHandler:OnEvent(event, arg1, ...)
         print("|cff00ffffStriLi Version " .. GetAddOnMetadata("StriLi", "Version") .. " loaded|r");
         StriLi_initAddon();
         StriLi.MainFrame:init();
-        if tonumber(StriLi_LatestVersion) > tonumber(GetAddOnMetadata("StriLi", "Version")) then
+        -- Quick fix for the "-alpha" flag added to the version number
+        -- TODO: Find better way to handle that... maybe remove "-alpha" flag again
+        local StriLi_LatestVersion_n, _ = StriLi_LatestVersion:gsub('[^%d|.]','');
+        local GetAddOnMetadata_version, _ = GetAddOnMetadata("StriLi", "Version"):gsub('[^%d|.]','');
+        if tonumber(StriLi_LatestVersion_n) > tonumber(GetAddOnMetadata_version) then
+        -- if tonumber(StriLi_LatestVersion) > tonumber(GetAddOnMetadata("StriLi", "Version")) then
             local versionFrame = CreateFrame("FRAME", "StriLi_VersionFrame", UIParent, "StriLi_CopyVersionFrame_Template");
             local editBox = versionFrame:GetChildren():GetChildren();
             editBox:SetText("https://github.com/sba5827/StriLi");
