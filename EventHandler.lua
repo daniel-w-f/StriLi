@@ -33,7 +33,7 @@ function StriLi.EventHandler:init()
 
 end
 
-function StriLi.EventHandler:OnEvent(event, ...)
+function StriLi.EventHandler:OnEvent(event, arg1, ...)
 
     if event == "ADDON_LOADED" and arg1 == "StriLi" then
         print("|cff00ffffStriLi Version " .. GetAddOnMetadata("StriLi", "Version") .. " loaded|r");
