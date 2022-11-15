@@ -28,7 +28,7 @@ function StriLi.EventHandler:init()
     end);
     self.frame:RegisterEvent("ADDON_LOADED");
     self.frame:RegisterEvent("PLAYER_LOGOUT");
-    self.frame:RegisterEvent("PARTY_MEMBERS_CHANGED");
+    self.frame:RegisterEvent("GROUP_ROSTER_UPDATE");
     self.frame:RegisterEvent("CHAT_MSG_ADDON");
 
 end
