@@ -87,7 +87,7 @@ end
 function StriLi.CommunicationHandler:On_Request_CheckForMaster()
 
     if (StriLi.master ~= "") and (StriLi.master == UnitName("player")) then
-        SendAddonMessage("SL_RS_CFM", StriLi.master, "RAID");
+        C_ChatInfo.SendAddonMessage("SL_RS_CFM", StriLi.master, "RAID");
     end
 
 end
@@ -139,7 +139,7 @@ function StriLi.CommunicationHandler:checkForMaster(cbf, time)
 
     end);
 
-    SendAddonMessage("SL_RQ_CFM", "", "RAID");
+    C_ChatInfo.SendAddonMessage("SL_RQ_CFM", "", "RAID");
 
 end
 
@@ -164,7 +164,7 @@ end
 function StriLi.CommunicationHandler:sendMasterChanged(newMaster)
 
     if (StriLi.master == UnitName("player")) or (StriLi.master == "") then
-        SendAddonMessage("SL_MC", UnitName("player") .. " " .. newMaster, "RAID");
+        C_ChatInfo.SendAddonMessage("SL_MC", UnitName("player") .. " " .. newMaster, "RAID");
         return true;
     end
 
@@ -209,7 +209,7 @@ end
 function StriLi.CommunicationHandler:sendDataChanged(name, counterName, counterData, masterIsRequesting)
 
     if (StriLi.master == UnitName("player")) or masterIsRequesting then
-        SendAddonMessage("SL_DC", UnitName("player") .. " " .. name .. " " .. counterName .. " " .. counterData, "RAID");
+        C_ChatInfo.SendAddonMessage("SL_DC", UnitName("player") .. " " .. name .. " " .. counterName .. " " .. counterData, "RAID");
     end
 
 end
@@ -217,7 +217,7 @@ end
 function StriLi.CommunicationHandler:sendMembersCombined(mem1Name, mem2Name)
 
     if StriLi.master == UnitName("player") then
-        SendAddonMessage("SL_DC", UnitName("player") .. " " .. mem1Name .. " " .. mem2Name .. " " .. "Combine", "RAID");
+        C_ChatInfo.SendAddonMessage("SL_DC", UnitName("player") .. " " .. mem1Name .. " " .. mem2Name .. " " .. "Combine", "RAID");
     end
 
 end
@@ -225,7 +225,7 @@ end
 function StriLi.CommunicationHandler:sendMemberRemoved(name)
 
     if StriLi.master == UnitName("player") then
-        SendAddonMessage("SL_DC", UnitName("player") .. " " .. name .. " " .. "Remove" .. " non", "RAID");
+        C_ChatInfo.SendAddonMessage("SL_DC", UnitName("player") .. " " .. name .. " " .. "Remove" .. " non", "RAID");
     end
 
 end
@@ -238,7 +238,7 @@ end
 
 function StriLi.CommunicationHandler:sendResetData()
     if (UnitName("player") == StriLi.master) then
-        SendAddonMessage("SL_RD", UnitName("player"), "RAID");
+        C_ChatInfo.SendAddonMessage("SL_RD", UnitName("player"), "RAID");
     end
 end
 
@@ -284,13 +284,13 @@ function StriLi.CommunicationHandler:sendSycRequest()
         end);
     end
 
-    SendAddonMessage("SL_RQ_SD", UnitName("player"), "RAID");
+    C_ChatInfo.SendAddonMessage("SL_RQ_SD", UnitName("player"), "RAID");
 
 end
 
 function StriLi.CommunicationHandler:On_Request_UserHasStriLi(nameOfRequestedPlayer)
     if nameOfRequestedPlayer == UnitName("player") then
-        SendAddonMessage("SL_RS_UHS", UnitName("player"), "RAID");
+        C_ChatInfo.SendAddonMessage("SL_RS_UHS", UnitName("player"), "RAID");
     end
 
 end
@@ -333,7 +333,7 @@ function StriLi.CommunicationHandler:checkIfUserHasStriLi(name, cbf)
         end
 
     end);
-    SendAddonMessage("SL_RQ_UHS", name, "RAID");
+    C_ChatInfo.SendAddonMessage("SL_RQ_UHS", name, "RAID");
 
     return true;
 
@@ -354,18 +354,18 @@ function StriLi.CommunicationHandler:ShoutVersion()
         local _, instanceType = IsInInstance()
 
         if instanceType == "pvp" then
-            SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "BATTLEGROUND");
+            C_ChatInfo.SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "BATTLEGROUND");
         else
-            SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "RAID");
+            C_ChatInfo.SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "RAID");
         end
 
     -- elseif GetNumPartyMembers() > 0 then
     elseif GetNumGroupMembers() > 0 then
-        SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "PARTY");
+        C_ChatInfo.SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "PARTY");
     end
 
     if IsInGuild() then
-        SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "GUILD");
+        C_ChatInfo.SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "GUILD");
     end
 
 end
