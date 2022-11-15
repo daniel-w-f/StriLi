@@ -347,7 +347,9 @@ end
 
 function StriLi.CommunicationHandler:ShoutVersion()
 
-    if GetNumRaidMembers() > 1 then
+    -- TODO: find different way to distinguish between RAID and PARTY
+    -- if GetNumRaidMembers() > 1 then
+    if GetNumGroupMembers() > 1 then
 
         local _, instanceType = IsInInstance()
 
