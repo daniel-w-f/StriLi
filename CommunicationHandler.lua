@@ -359,7 +359,8 @@ function StriLi.CommunicationHandler:ShoutVersion()
             SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "RAID");
         end
 
-    elseif GetNumPartyMembers() > 0 then
+    -- elseif GetNumPartyMembers() > 0 then
+    elseif GetNumGroupMembers() > 0 then
         SendAddonMessage("SL_VC", tostring(StriLi_LatestVersion), "PARTY");
     end
 
