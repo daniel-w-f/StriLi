@@ -28,12 +28,12 @@ function StriLi.EventHandler:init()
     end);
     self.frame:RegisterEvent("ADDON_LOADED");
     self.frame:RegisterEvent("PLAYER_LOGOUT");
-    self.frame:RegisterEvent("PARTY_MEMBERS_CHANGED");
+    self.frame:RegisterEvent("GROUP_ROSTER_UPDATE");
     self.frame:RegisterEvent("CHAT_MSG_ADDON");
 
 end
 
-function StriLi.EventHandler:OnEvent(event, ...)
+function StriLi.EventHandler:OnEvent(event, arg1, ...)
 
     if event == "ADDON_LOADED" and arg1 == "StriLi" then
         print("|cff00ffffStriLi Version " .. GetAddOnMetadata("StriLi", "Version") .. " loaded|r");
